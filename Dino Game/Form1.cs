@@ -87,7 +87,7 @@ namespace Dino_Game
             {
                 if (_y >= max_hoehe + 20)
                 {
-                    _y -= 20;
+                    _y -= 30;
                 }
                 else
                 {
@@ -100,7 +100,7 @@ namespace Dino_Game
             // Mensch wird runtergesetzt
             if(_objPostition == positon.Down)
             {
-                _y += 20;
+                _y += 30;
             }
 
             if (sneak == true)
@@ -130,11 +130,11 @@ namespace Dino_Game
             e.Graphics.FillRectangle(Brushes.LightSkyBlue, 0, 0, 1400, 600);
 
             // Mensch (Heimisch)
-            e.Graphics.FillRectangle(Brushes.Black, _x, (float)_y, breite, höhe);
-
+            //e.Graphics.FillRectangle(Brushes.Black, _x, (float)_y, breite, höhe);
+            e.Graphics.DrawImage(new Bitmap("Heimisch Bekifft.jpg"), _x, (float)_y, breite, höhe);
             // Kakteen (Hindernisse)
-            e.Graphics.FillRectangle(Brushes.Black, _xobst, 500, 50,100);
-
+            // e.Graphics.FillRectangle(Brushes.Black, _xobst, 500, 50,100);
+            e.Graphics.DrawImage(new Bitmap("Bild.png"), _xobst, 450, 100, 150);
 
         }
 
