@@ -131,7 +131,7 @@ namespace Dino_Game
 
             // Mensch (Heimisch)
             //e.Graphics.FillRectangle(Brushes.Black, _x, (float)_y, breite, höhe);
-            e.Graphics.DrawImage(new Bitmap("Heimisch Bekifft.jpg"), _x, (float)_y, breite, höhe);
+            e.Graphics.DrawImage(new Bitmap("Heimisch ausgeschnitten.png"), _x, (float)_y, breite, höhe);
             // Kakteen (Hindernisse)
             // e.Graphics.FillRectangle(Brushes.Black, _xobst, 500, 50,100);
             e.Graphics.DrawImage(new Bitmap("Bild.png"), _xobst, 450, 100, 150);
