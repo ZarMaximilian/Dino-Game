@@ -26,7 +26,7 @@ namespace Dino_Game
             InitializeComponent();
 
             _x = 200;
-            _y = 460;
+            _y = 400;
             _objPostition = positon.Down;
 
         }
@@ -40,7 +40,7 @@ namespace Dino_Game
         private void Canvas_KeyDown(object sender, KeyEventArgs e)
         {
 
-            if (e.KeyCode == Keys.Up)
+            if (e.KeyCode == Keys.Up && _y >=410)
             {
                 _objPostition = positon.Up;
             }
@@ -59,7 +59,6 @@ namespace Dino_Game
 
         private Boolean sneak = false;
         private Random rng;
-        private Thread t1;
         private void Timer1_Tick(object sender, EventArgs e)
         {
             
