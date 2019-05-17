@@ -21,13 +21,16 @@ namespace Dino_Game
         private int _x;
         private double _y;
 
+        private int max_hoehe;
+
         public canvas()
         {
             InitializeComponent();
 
             _x = 200;
-            _y = 460;
+            _y = 400;
             _objPostition = positon.Down;
+            max_hoehe = 200;
 
         }
 
@@ -40,14 +43,16 @@ namespace Dino_Game
         private void Canvas_KeyDown(object sender, KeyEventArgs e)
         {
 
-            if (e.KeyCode == Keys.Up)
+            if (e.KeyCode == Keys.Up && _y >= 410)
             {
                 _objPostition = positon.Up;
             }
+
             if (e.KeyCode == Keys.W)
             {
                 _objPostition = positon.Up;
             }
+
             if(e.KeyCode == Keys.Down)
             {
                 sneak = true;
@@ -59,7 +64,8 @@ namespace Dino_Game
 
         private Boolean sneak = false;
         private Random rng;
-        private Thread t1;
+        
+        // Ticker der jede Sekunde durchläuft wird
         private void Timer1_Tick(object sender, EventArgs e)
         {
             
@@ -69,25 +75,31 @@ namespace Dino_Game
                 rng = new Random();
                 _xobst = rng.Next(1400, 1700);
             }
+
             if (_y +höhe >= 550)
             {
                 _y =400;
                
             }
+
+            // Mensch wird hochgesetzt
             if (_objPostition == positon.Up)
             {
-              
-                
-                while(_y >= 200)
+                if (_y >= max_hoehe + 20)
                 {
                     _y -= 20;
                 }
-                _objPostition = positon.Down;
+                else
+                {
+                    _objPostition = positon.Down;
+                }
+                
 
             }
+
+            // Mensch wird runtergesetzt
             if(_objPostition == positon.Down)
             {
-
                 _y += 20;
             }
 
@@ -99,8 +111,12 @@ namespace Dino_Game
             }
             else
                 höhe = 150;
+
+            // Aktualisiert die Oberfläche
             Invalidate();
         }
+
+
 
         private int breite = 80;
         private int höhe = 150;
@@ -110,9 +126,13 @@ namespace Dino_Game
         private void Canvas_Paint(object sender, PaintEventArgs e)
         {
             
-            
+            // blaue Hintergrund
             e.Graphics.FillRectangle(Brushes.LightSkyBlue, 0, 0, 1400, 600);
+
+            // Mensch (Heimisch)
             e.Graphics.FillRectangle(Brushes.Black, _x, (float)_y, breite, höhe);
+
+            // Kakteen (Hindernisse)
             e.Graphics.FillRectangle(Brushes.Black, _xobst, 500, 50,100);
 
 
@@ -128,7 +148,10 @@ namespace Dino_Game
             }
         }
 
-        
+        private void canvas_Load(object sender, EventArgs e)
+        {
+
+        }
     }
     // chrissi stinkt !
 

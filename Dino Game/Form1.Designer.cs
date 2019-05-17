@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(canvas));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
@@ -38,18 +39,16 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
-            // timer2
-            // 
-            
-            // 
             // canvas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1384, 561);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "canvas";
             this.Text = "Spiel";
+            this.Load += new System.EventHandler(this.canvas_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Canvas_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Canvas_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Canvas_KeyUp);
