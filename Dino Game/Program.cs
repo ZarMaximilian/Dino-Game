@@ -13,7 +13,7 @@ namespace Dino_Game
 {
     static class Program
     {
-        
+
 
         /// <summary>
         /// Der Haupteinstiegspunkt für die Anwendung.
@@ -21,12 +21,12 @@ namespace Dino_Game
         [STAThread]
         static void Main()
         {
-            
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new canvas());
         }
-        
+
     }
 
     public class Obstacles : Form
@@ -40,11 +40,21 @@ namespace Dino_Game
         }
         public float speed;
         public int obstspeed;
+        private int breite, höhe;
+        private canvas canvas;
 
-        public Obstacles(int x, int y,int breite, int höhe)
+        public Obstacles(int _x, int _y, int breite, int höhe)
         {
-           
+            canvas canvas = new canvas();
+            x = _x;
+            y = _y;
+            breite = this.breite;
+            höhe = this.höhe;
             
+
         }
+
+
+
     }
 }
