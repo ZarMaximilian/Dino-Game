@@ -64,7 +64,7 @@ namespace Dino_Game
 
         private Boolean sneak = false;
         private Random rng;
-        
+      
         // Ticker der jede Sekunde durchläuft wird
         private void Timer1_Tick(object sender, EventArgs e)
         {
@@ -80,6 +80,12 @@ namespace Dino_Game
             {
                 _y =400;
                
+            }
+            
+            if (_x < _xobst +20 + hitboxbreite && _x + breite > _xobst +20 && _y < _yobst + hitboxhöhe && _y + höhe > _yobst)
+            {
+                Application.Exit();
+                
             }
 
             // Mensch wird hochgesetzt
@@ -122,6 +128,13 @@ namespace Dino_Game
         private int höhe = 150;
         private Obstacles obst;
         private int _xobst= 1350;
+        public Bitmap heimisch;
+        private int _obstbreite = 100;
+        private int _obsthöhe = 150;
+        private int _yobst = 450;
+        private int hitboxbreite = 80;
+        private int hitboxhöhe = 130;
+
 
         private void Canvas_Paint(object sender, PaintEventArgs e)
         {
@@ -131,10 +144,11 @@ namespace Dino_Game
 
             // Mensch (Heimisch)
             //e.Graphics.FillRectangle(Brushes.Black, _x, (float)_y, breite, höhe);
-            e.Graphics.DrawImage(new Bitmap("Heimisch ausgeschnitten.png"), _x, (float)_y, breite, höhe);
+            Bitmap heimisch = new Bitmap("Heimisch ausgeschnitten.png");
+            e.Graphics.DrawImage(heimisch, _x, (float)_y, breite, höhe);
             // Kakteen (Hindernisse)
-            // e.Graphics.FillRectangle(Brushes.Black, _xobst, 500, 50,100);
-            e.Graphics.DrawImage(new Bitmap("Bild.png"), _xobst, 450, 100, 150);
+            e.Graphics.FillRectangle(Brushes.Transparent, _xobst , _yobst, hitboxbreite, hitboxhöhe );
+            e.Graphics.DrawImage(new Bitmap("Bild.png"), _xobst, _yobst, _obstbreite,_obsthöhe);
 
         }
 
@@ -152,6 +166,8 @@ namespace Dino_Game
         {
 
         }
+
+        
     }
     // chrissi stinkt !
 
