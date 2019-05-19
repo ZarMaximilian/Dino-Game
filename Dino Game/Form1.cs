@@ -80,7 +80,8 @@ namespace Dino_Game
         // Ticker der jede Sekunde durchläuft wird
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            
+         
+            Start:
             _xobst -= 30;
             if(_xobst <= 0)
             {
@@ -96,8 +97,9 @@ namespace Dino_Game
             
             if (_x < _xobst +20 + hitboxbreite && _x + breite > _xobst +20 && _y < _yobst + hitboxhöhe && _y + höhe > _yobst)
             {
-                Application.Exit();
-                
+                _xobst = rng.Next(1400, 1700);
+                Thread.Sleep(500);
+                goto Start;
             }
 
             // Mensch wird hochgesetzt
