@@ -103,6 +103,7 @@ namespace Dino_Game
             // Mensch wird hochgesetzt
             if (_objPostition == positon.Up)
             {
+                sneak = false;
                 if (_y >= max_hoehe + 20)
                 {
                     _y -= 30;
@@ -123,7 +124,6 @@ namespace Dino_Game
             {
                 höhe = 100;
                 _y = _y + 50;
-
             }
             else
                 höhe = 150;
@@ -236,7 +236,7 @@ namespace Dino_Game
 
             // Mensch (Heimisch)
             //e.Graphics.FillRectangle(Brushes.Black, _x, (float)_y, breite, höhe);
-            Bitmap heimisch = new Bitmap("Heimisch ausgeschnitten.png");
+            Bitmap heimisch = new Bitmap("Heimisch.png");
             e.Graphics.DrawImage(heimisch, _x, (float)_y, breite, höhe);
             // Kakteen (Hindernisse)
             e.Graphics.FillRectangle(Brushes.Transparent, _xobst , _yobst, hitboxbreite, hitboxhöhe );
